@@ -35,8 +35,8 @@ namespace Microsoft.CST.AttackSurfaceAnalyzer.Tests
                 DateFormatHandling = DateFormatHandling.IsoDateFormat
             };
 
-            var outputJson = File.ReadAllText(@"TestData\ExportTests\TestGenerateSarifLog\output.json");
-            var rulesJson = File.ReadAllText(@"TestData\ExportTests\TestGenerateSarifLog\rules.json");
+            var outputJson = File.ReadAllText(Path.Combine("TestData", "ExportTests", "TestGenerateSarifLog", "output.json"));
+            var rulesJson = File.ReadAllText(Path.Combine("TestData", "ExportTests", "TestGenerateSarifLog", "rules.json"));
             var outputDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(outputJson, jsonSettings);
             var rulesList = JsonConvert.DeserializeObject<IEnumerable<AsaRule>>(rulesJson, jsonSettings);
 

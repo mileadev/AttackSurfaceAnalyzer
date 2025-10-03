@@ -9,6 +9,7 @@ using Microsoft.CST.AttackSurfaceAnalyzer.Utils;
 using Microsoft.CST.OAT;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Serilog;
@@ -611,8 +612,25 @@ namespace Microsoft.CST.AttackSurfaceAnalyzer.Cli
 
         public static SarifLog GenerateSarifLog(Dictionary<string, object> output, IEnumerable<AsaRule> rules)
         {
-            var metadata = (Dictionary<string, string>)output["metadata"];
-            var results = (Dictionary<string, object>)output["results"];
+            Dictionary<string, string> metadata;
+            if (output["metadata"] is JObject metaJo)
+            {
+                metadata = metaJo.ToObject<Dictionary<string, string>>() ?? new Dictionary<string, string>();
+            }
+            else
+            {
+                metadata = (Dictionary<string, string>)output["metadata"];
+            }
+
+            Dictionary<string, object> results;
+            if (output["results"] is JObject resJo)
+            {
+                results = resJo.ToObject<Dictionary<string, object>>() ?? new Dictionary<string, object>();
+            }
+            else
+            {
+                results = (Dictionary<string, object>)output["results"];
+            }
             var version = metadata["compare-version"];
 
             var log = new SarifLog();
@@ -661,7 +679,19 @@ namespace Microsoft.CST.AttackSurfaceAnalyzer.Cli
 
             foreach (var item in results)
             {
-                var compareResults = (List<CompareResult>)item.Value;
+                List<CompareResult> compareResults;
+                if (item.Value is JArray compResJa)
+                {
+                    var serializer = new JsonSerializer
+                    {
+                        TypeNameHandling = TypeNameHandling.Objects
+                    };
+                    compareResults = compResJa.ToObject<List<CompareResult>>(serializer) ?? new List<CompareResult>();
+                }
+                else
+                {
+                    compareResults = (List<CompareResult>)item.Value;
+                }
                 foreach (var compareResult in compareResults)
                 {
                     if (!artifacts.Any(a => a.Location.Description.Text.ToString() == compareResult.Identity))
