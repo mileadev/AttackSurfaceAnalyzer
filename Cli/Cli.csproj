@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <OutputType>Exe</OutputType>
-    <ReleaseVersion>2.1-alpha</ReleaseVersion>
-    <LangVersion>9.0</LangVersion>
+    <ReleaseVersion>2.3</ReleaseVersion>
+    <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <AssemblyName>Asa</AssemblyName>
     <RootNamespace>Microsoft.CST.AttackSurfaceAnalyzer.Cli</RootNamespace>
@@ -43,7 +43,4 @@
     <PackageReference Include="Tewr.Blazor.FileReader" Version="3.2.0.21211" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Update="Nerdbank.GitVersioning" Version="3.4.231" />
-  </ItemGroup>
 </Project>

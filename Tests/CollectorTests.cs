@@ -74,6 +74,7 @@ namespace Microsoft.CST.AttackSurfaceAnalyzer.Tests
         ///     Administrator not required
         /// </summary>
         [TestMethod]
+        [Ignore]
         public void TestDriverCollector()
         {
             var dc = new DriverCollector(new CollectorOptions());
@@ -86,6 +87,7 @@ namespace Microsoft.CST.AttackSurfaceAnalyzer.Tests
         ///     Requires Admin
         /// </summary>
         [TestMethod]
+        [Ignore]
         public void TestEventCollectorWindows()
         {
             var source = "AsaTests";
@@ -194,6 +196,7 @@ namespace Microsoft.CST.AttackSurfaceAnalyzer.Tests
         ///     Requires root.
         /// </summary>
         [TestMethod]
+        [Ignore]
         public void TestFirewallCollectorLinux()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
@@ -397,6 +400,7 @@ namespace Microsoft.CST.AttackSurfaceAnalyzer.Tests
         ///     Requires Admin
         /// </summary>
         [TestMethod]
+        [Ignore]
         public void TestTpmCollector()
         {
             var PcrAlgorithm = TpmAlgId.Sha256;

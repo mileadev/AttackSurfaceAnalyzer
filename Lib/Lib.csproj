@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
     <RootNamespace>AttackSurfaceAnalyzer</RootNamespace>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <AssemblyName>AsaLib</AssemblyName>
     <copyright>© Microsoft Corporation. All rights reserved.</copyright>
@@ -21,7 +21,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <ReleaseVersion>2.1-alpha</ReleaseVersion>
+    <ReleaseVersion>2.3</ReleaseVersion>
   </PropertyGroup>
 
   <Target Name="CopyLicenseNotice" AfterTargets="AfterBuild">
@@ -60,10 +60,6 @@
     <PackageReference Include="System.Net.Security" Version="4.3.2" />
     <PackageReference Include="Mono.Posix.NETStandard" Version="1.0.0" />
     <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="3.1.0" />
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.231">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="WindowsFirewallHelper" Version="2.0.2.29-beta1" />
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="sqlite" Version="3.13.0" />
